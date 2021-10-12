@@ -39,12 +39,12 @@ foreach ($object in $vnetInfoCollection) {
     Subscription    = $object.Subscription
     Name = $object.Name
   }
-  # create new object and append IP into the computer object
+  # create new object and append vnet into the objVnet
   for ($i = 0; $i -lt $maxCountVnet; $i++) {
     $keyName = "Vnet$($i)"
     $objVnet | Add-Member NoteProperty $keyName $object.Vnet[$i]
   }
-  # create new object and append dns server into the computer object
+  # create new object and append subnet into the objVnet
   if ($object.Subnets.Count -lt 2) {
     $keyName = "Subnet0"
     $objVnet | Add-Member NoteProperty $keyName $object.Subnets
